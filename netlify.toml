@@ -1,0 +1,27 @@
+# Netlify configuration for Base Ninja Game
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Production context
+[context.production]
+  environment = { NODE_VERSION = "20" }
+
+# Deploy preview context  
+[context.deploy-preview]
+  environment = { NODE_VERSION = "20" }
+
+# Branch deploy context
+[context.branch-deploy]
+  environment = { NODE_VERSION = "20" }

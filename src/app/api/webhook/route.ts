@@ -52,35 +52,21 @@ export async function POST(request: NextRequest) {
   const fid = data.fid;
   const event = data.event;
 
-  // Only handle notifications if Neynar is not enabled
-  // When Neynar is enabled, notifications are handled through their webhook
+  // Handle notification events
   switch (event.event) {
-    case "frame_added":
+    case "miniapp_added":
+    case "notifications_enabled":
       if (event.notificationDetails) {
         await setUserNotificationDetails(fid, event.notificationDetails);
         await sendFrameNotification({
           fid,
-          title: "Welcome to Frames v2",
-          body: "Frame is now added to your client",
+          title: "Welcome to Base Ninja",
+          body: "Game is now added to your client",
         });
-      } else {
-        await deleteUserNotificationDetails(fid);
       }
       break;
 
-    case "frame_removed":
-      await deleteUserNotificationDetails(fid);
-      break;
-
-    case "notifications_enabled":
-      await setUserNotificationDetails(fid, event.notificationDetails);
-      await sendFrameNotification({
-        fid,
-        title: "Ding ding ding",
-        body: "Notifications are now enabled",
-      });
-      break;
-
+    case "miniapp_removed":
     case "notifications_disabled":
       await deleteUserNotificationDetails(fid);
       break;

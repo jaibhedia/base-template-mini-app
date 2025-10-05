@@ -1,0 +1,5 @@
+hardhat.config.ts
+contracts/hardhat.config.ts
+scripts/contract/
+*.sol
+.env.contract.example

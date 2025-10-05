@@ -19,11 +19,13 @@ export function Header({ neynarUser }: HeaderProps) {
 
   return (
     <div className="relative">
-      <div className="mb-1 py-2 px-3 bg-card text-card-foreground rounded-lg flex items-center justify-between border-[3px] border-double border-primary">
-        <div className="text-lg font-light">Welcome to {APP_NAME}!</div>
+      <div className="mb-1 py-3 px-4 bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-2xl flex items-center justify-between border border-blue-500/30 shadow-lg shadow-blue-500/10">
+        <div className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+          {APP_NAME}
+        </div>
         {context?.user && (
           <div
-            className="cursor-pointer"
+            className="cursor-pointer relative group"
             onClick={() => {
               setIsUserDropdownOpen(!isUserDropdownOpen);
               setHasClickedPfp(true);
@@ -33,7 +35,7 @@ export function Header({ neynarUser }: HeaderProps) {
               <img
                 src={context.user.pfpUrl}
                 alt="Profile"
-                className="w-10 h-10 rounded-full border-2 border-primary"
+                className="w-10 h-10 rounded-full border-2 border-blue-500 ring-2 ring-blue-500/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-blue-500/40"
               />
             )}
           </div>
@@ -42,18 +44,18 @@ export function Header({ neynarUser }: HeaderProps) {
       {context?.user && (
         <>
           {!hasClickedPfp && (
-            <div className="absolute right-0 -bottom-6 text-xs text-primary flex items-center justify-end gap-1 pr-2">
+            <div className="absolute right-0 -bottom-6 text-xs text-blue-500 flex items-center justify-end gap-1 pr-2 animate-bounce">
               <span className="text-[10px]">↑</span> Click PFP!{" "}
               <span className="text-[10px]">↑</span>
             </div>
           )}
 
           {isUserDropdownOpen && (
-            <div className="absolute top-full right-0 z-50 w-fit mt-1 bg-card text-card-foreground rounded-lg shadow-lg border border-border">
-              <div className="p-3 space-y-2">
+            <div className="absolute top-full right-0 z-50 w-fit mt-2 bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-2xl shadow-2xl border border-blue-500/30 shadow-blue-500/20">
+              <div className="p-4 space-y-2 min-w-[200px]">
                 <div className="text-right">
                   <h3
-                    className="font-bold text-sm hover:underline cursor-pointer inline-block text-foreground"
+                    className="font-bold text-sm hover:text-blue-500 cursor-pointer inline-block transition-colors duration-200"
                     onClick={() =>
                       sdk.actions.viewProfile({ fid: context.user.fid })
                     }
@@ -63,12 +65,12 @@ export function Header({ neynarUser }: HeaderProps) {
                   <p className="text-xs text-muted-foreground">
                     @{context.user.username}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-blue-400">
                     FID: {context.user.fid}
                   </p>
                   {neynarUser && (
                     <>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-blue-400">
                         Neynar Score: {neynarUser.score}
                       </p>
                     </>

@@ -8,8 +8,10 @@ const BaseNinjaGame = dynamic(() => import("~/components/game/BaseNinjaGame").th
   ssr: false,
 });
 
-export default function App(
-  { title }: { title?: string } = { title: APP_NAME }
-) {
-  return <BaseNinjaGame />;
+export default function App() {
+  return (
+    <>
+      <BaseNinjaGame />
+    </>
+  );
 }

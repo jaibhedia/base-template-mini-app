@@ -35,7 +35,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onPlay, onBack }) => {
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">Avoid Bombs</h3>
                 <p className="text-white/80">
-                  Don't slice the bombs! Each bomb hit costs you one life. You have 3 lives total.
+                  Watch out for bombs! Slicing them will end your game immediately. Don&apos;t let tokens fall either - you only have 3 lives!
                 </p>
               </div>
             </div>
@@ -78,7 +78,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onPlay, onBack }) => {
             onClick={onPlay}
             className="px-12 py-3 text-lg font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-purple-500/50"
           >
-            Let's Play! 🎮
+            Let&apos;s Play! 🎮
           </button>
         </div>
       </div>

@@ -37,7 +37,7 @@ export const PauseScreen: React.FC<PauseScreenProps> = ({
               <p>• Swipe quickly to build combos</p>
               <p>• Watch out for bombs </p>
               <p>• Higher combos = bigger multipliers</p>
-              <p>• Don't let tokens fall!</p>
+              <p>• Don&apos;t let tokens fall!</p>
             </div>
           </div>
 

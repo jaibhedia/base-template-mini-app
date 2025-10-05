@@ -21,17 +21,17 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   onPlayAgain,
   onMainMenu,
 }) => {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const { mintScore, isPending, isConfirming, isConfirmed, error } = useMintScoreNFT();
   const [hasMinted, setHasMinted] = useState(false);
   
   const isNewHighScore = score === highScore && score > 0;
   const getRank = (score: number) => {
-    if (score >= 1000) return { title: 'Legendary Ninja', color: 'from-yellow-400 to-orange-500' };
-    if (score >= 500) return { title: 'Master Ninja',  color: 'from-purple-400 to-pink-500' };
-    if (score >= 250) return { title: 'Elite Ninja',  color: 'from-blue-400 to-purple-500' };
-    if (score >= 100) return { title: 'Skilled Ninja',  color: 'from-green-400 to-blue-500' };
-    return { title: 'Novice Ninja',  color: 'from-gray-400 to-gray-600' };
+    if (score >= 1000) return { title: 'Legendary Ninja', color: 'from-yellow-400 to-orange-500', emoji: '👑' };
+    if (score >= 500) return { title: 'Master Ninja',  color: 'from-purple-400 to-pink-500', emoji: '🥷' };
+    if (score >= 250) return { title: 'Elite Ninja',  color: 'from-blue-400 to-purple-500', emoji: '⚔️' };
+    if (score >= 100) return { title: 'Skilled Ninja',  color: 'from-green-400 to-blue-500', emoji: '🎯' };
+    return { title: 'Novice Ninja',  color: 'from-gray-400 to-gray-600', emoji: '🌱' };
   };
 
   const rank = getRank(score);
